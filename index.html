@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Kalitera - SOftware Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        .section {
+            padding: 80px 0;
+        }
+        .section-title {
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+        .navbar {
+            background-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        #hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 150px 0;
+        }
+        .skill-item {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+        .timeline:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            margin-left: -1.5px;
+            background-color: var(--primary-color);
+        }
+        .timeline > li {
+            position: relative;
+            margin-bottom: 50px;
+            min-height: 50px;
+        }
+        .timeline > li:before,
+        .timeline > li:after {
+            content: " ";
+            display: table;
+        }
+        .timeline > li:after {
+            clear: both;
+        }
+        .timeline > li .timeline-panel {
+            float: left;
+            position: relative;
+            width: 46%;
+            padding: 20px;
+            border: 1px solid #d4d4d4;
+            border-radius: 8px;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+        }
+        .timeline > li .timeline-panel:before {
+            content: " ";
+            display: inline-block;
+            position: absolute;
+            top: 26px;
+            right: -15px;
+            border-top: 15px solid transparent;
+            border-right: 0 solid #ccc;
+            border-bottom: 15px solid transparent;
+            border-left: 15px solid #ccc;
+        }
+        .timeline > li .timeline-panel:after {
+            content: " ";
+            display: inline-block;
+            position: absolute;
+            top: 27px;
+            right: -14px;
+            border-top: 14px solid transparent;
+            border-right: 0 solid #fff;
+            border-bottom: 14px solid transparent;
+            border-left: 14px solid #fff;
+        }
+        .timeline > li .timeline-badge {
+            z-index: 100;
+            position: absolute;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin-left: -25px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 1.4em;
+            line-height: 50px;
+            color: #fff;
+            background-color: var(--accent-color);
+        }
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+        .timeline > li.timeline-inverted > .timeline-panel:before {
+            right: auto;
+            left: -15px;
+            border-right-width: 15px;
+            border-left-width: 0;
+        }
+        .timeline > li.timeline-inverted > .timeline-panel:after {
+            right: auto;
+            left: -14px;
+            border-right-width: 14px;
+            border-left-width: 0;
+        }
+        #projects .card {
+            transition: all 0.3s ease;
+        }
+        #projects .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        #contact {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        #contact a {
+            color: var(--primary-color);
+        }
+        .social-icon {
+            font-size: 2em;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+        #scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #scroll-to-top:hover {
+            background-color: var(--accent-color);
+        }
+        @media (max-width: 767px) {
+            .timeline:before {
+                left: 40px;
+            }
+            .timeline > li .timeline-panel {
+                width: calc(100% - 90px);
+                width: -moz-calc(100% - 90px);
+                width: -webkit-calc(100% - 90px);
+            }
+            .timeline > li .timeline-badge {
+                left: 15px;
+                margin-left: 0;
+                top: 16px;
+            }
+            .timeline > li .timeline-panel {
+                float: right;
+            }
+            .timeline > li .timeline-panel:before {
+                border-left-width: 0;
+                border-right-width: 15px;
+                left: -15px;
+                right: auto;
+            }
+            .timeline > li .timeline-panel:after {
+                border-left-width: 0;
+                border-right-width: 14px;
+                left: -14px;
+                right: auto;
+            }
+        }
+    </style>
+</head>
+<style>
+    #contact .card {
+    border: none;
+    transition: all 0.3s ease;
+}
+
+#contact .card:hover {
+    transform: translateY(-5px);
+}
+
+#contact .social-icon {
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+#contact .social-icon:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+</style>
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">Hope Kalitera</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="display-1 fw-bold mb-4">Hope Kalitera</h1>
+            <h2 class="display-4 mb-4">Software Developer</h2>
+            <p class="lead mb-5">Crafting innovative digital solutions with passion and precision</p>
+            <a href="#about" class="btn btn-light btn-lg">Learn More</a>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">About Me</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="profile.jpg" height="400" width="400" alt="Hope Kalitera" class="img-fluid rounded-circle mb-4">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">Dedicated and versatile Software Developer with experience in Golang, JavaScript, PHP, and various frameworks. 
+                        Skilled in developing and maintaining innovative software solutions, 
+                        with a strong foundation in WEB (front-end and back-end technologies), Mobile Applications and Desktop.</p>
+                    <p>Currently pursuing a BSc in Management & Information Systems at the University of Malawi, The Polytechnic, 
+                        combining academic knowledge with practical industry experience to deliver cutting-edge software solutions.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg mt-3">Get in Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Skills</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="d-flex flex-wrap justify-content-center" id="skills-container">
+                        <!-- Skills will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Experience</h2>
+            <ul class="timeline">
+                <li>
+                    <div class="timeline-badge"><i class="fas fa-briefcase"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">Full Stack Developer</h4>
+                            <p><small class="text-muted"><i class="fas fa-clock"></i> 12/2022 - Present</small></p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>NNDI, Blantyre</p>
+                            <ul>
+                                <li>Develop and maintain cutting-edge software solutions using Golang and JavaScript</li>
+                                <li>Utilize Fiber and Vue frameworks to create efficient and responsive web applications</li>
+                                <li>Implement modern UI designs using Tailwind CSS</li>
+                                <li>Design and manage PostgreSQL databases for optimal performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li class="timeline-inverted">
+                    <div class="timeline-badge"><i class="fas fa-laptop-code"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">Software Developer Intern</h4>
+                            <p><small class="text-muted"><i class="fas fa-clock"></i> 01/2023 – 03/2023</small></p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>Credit Data MW</p>
+                            <ul>
+                                <li>Gained hands-on experience in PHP and CakePHP framework</li>
+                                <li>Contributed to existing software projects, enhancing functionality and user experience</li>
+                                <li>Worked with both PostgreSQL and MySQL databases</li>
+                                <li>Collaborated with senior developers to implement new features and resolve bugs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="projects" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">E-commerce Platform</h5>
+                            <p class="card-text">Developed a full-stack e-commerce platform using Vue.js and Golang, featuring real-time inventory management and secure payment integration.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Technologies: Vue.js, Golang, PostgreSQL</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Task Management App</h5>
+                            <p class="card-text">Created a responsive task management application with real-time updates using React and Node.js, integrated with a RESTful API.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Technologies: React, Node.js, Express, MongoDB</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        #contact .position-relative:hover .opacity-25 {
+            opacity: 0.4 !important;
+            transition: opacity 0.3s ease;
+        }
+
+        #contact .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+        }
+
+        #contact .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Get in Touch</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="position-relative">
+                        <img src="hope.jpg" alt="Contact Image" class="img-fluid rounded shadow-lg">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-primary opacity-25 rounded"></div>
+                        <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+                            <h3 class="mb-3">Let's Create Something Amazing Together!</h3>
+                            <p class="lead">I'm always open to new opportunities and exciting projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h3 class="card-title text-center mb-4">Send Me a Message</h3>
+                            <form id="contact-form">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Your Email</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Your Message</label>
+                                    <textarea class="form-control" id="message" rows="5" required></textarea>
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <a href="https://www.linkedin.com/in/hope-kalitera-23b2301bb/" target="_blank" class="social-icon mx-2" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin fa-2x"></i>
+                        </a>
+                        <a href="https://github.com/hopekali04" target="_blank" class="social-icon mx-2" aria-label="GitHub">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                        <a href="mailto:hopekalitera04@gmail.com" class="social-icon mx-2" aria-label="Email">
+                            <i class="fas fa-envelope fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2023 Hope Kalitera. All rights reserved.</p>
+    </footer>
+
+    <button id="scroll-to-top" title="Scroll to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Dynamically add skills
+        const skills = [
+            "Golang", "JavaScript", "PHP", "Python", "C++",
+            "Fiber", "Vue.js", "Django", "Laravel", "CakePHP", "Express",
+            "HTML", "CSS", "Tailwind CSS", "Bootstrap",
+            "PostgreSQL", "MySQL", "SQLite",
+            "Git", "GitHub",
+            "Adobe XD",
+            "Linux"
+        ];
+
+        const skillsContainer = document.getElementById('skills-container');
+        skills.forEach(skill => {
+            const skillElement = document.createElement('div');
+            skillElement.classList.add('skill-item');
+            skillElement.textContent = skill;
+            skillsContainer.appendChild(skillElement);
+        });
+
+        // Scroll to top functionality
+        const scrollToTopButton = document.getElementById('scroll-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                scrollToTopButton.style.display = 'block';
+            } else {
+                scrollToTopButton.style.display = 'none';
+            }
+        });
+
+        scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form submission (you'll need to implement the server-side handling)
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Implement form submission logic here
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
