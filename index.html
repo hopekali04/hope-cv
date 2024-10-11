@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hope Kalitera - SOftware Developer</title>
+    <title>Hope Kalitera - Software Developer</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -277,6 +277,65 @@
         </div>
     </nav>
 
+    <style>
+         .shop-banner {
+            width: 100vw;
+            height: 80vh;
+            background-image: url(prog.jpg);
+            background-size: cover;
+            background-position: center;
+            font-family: Montserrat, sans-serif;
+            margin-top: -5px;
+            position: relative;
+        }
+
+        .shop-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.647); /* Adjust the color and opacity as needed */
+        }
+
+        .shop-banner-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            padding-left: 10vw;
+        }
+
+        .shop-banner h2 {
+            color: #ffffff;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .shop-banner p {
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        .shop-banner .text-grey {
+            color: #cccccc;
+        }
+    </style>
+    <div class="shop-banner mt-3">
+        <div class="d-flex align-items-center justify-content-start h-100 shop-banner-content">
+            <div>
+                <button class="btn btn-warning rounded-pill px-4"></button>
+                <h2><strong>Portfolio</strong></h2>
+                <h3 class="display-1 fw-bold mb-4"  style="color: #ffffff;">Hope Kalitera</h3>
+                <h4 class="display-4 mb-4" style="color: #ffffff;">Software Developer</h4  >
+                <p class="lead mb-5" >Crafting innovative digital solutions with passion and precision</p>
+                <a href="#about" class="btn btn-light btn-lg">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <!--  
     <section id="hero" class="d-flex align-items-center" style="background-image: url(prog.jpg); object-fit: cover; overflow: hidden;">
         <div class="container text-center">
             <h1 class="display-1 fw-bold mb-4">Hope Kalitera</h1>
@@ -285,7 +344,7 @@
             <a href="#about" class="btn btn-light btn-lg">Learn More</a>
         </div>
     </section>
-
+-->
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title text-center">About Me</h2>
@@ -391,6 +450,8 @@
                     </div>
                 </div>
             </div>
+            <button class="btn rounded"> text</button>
+            <h2 class="section-title text-center">Projects</h2>
         </div>
     </section>
 
