@@ -1,0 +1,87 @@
+.about-section {
+    max-width: 1200px;
+    margin: 120px auto;
+    padding: 0 24px;
+  }
+  
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: 24px;
+    filter: brightness(1.02);
+    transition: transform 0.3s ease;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.02);
+  }
+  
+  .content-wrapper {
+    padding: 20px 0;
+  }
+  
+  .section-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1d1d1f;
+    margin-bottom: 32px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+  
+  .lead-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 21px;
+    line-height: 1.6;
+    color: #1d1d1f;
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  
+  .supporting-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #86868b;
+    margin-bottom: 32px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background: #0071e3;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 980px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 17px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .cta-button:hover {
+    background: #0077ED;
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .section-title {
+      font-size: 40px;
+    }
+    
+    .lead-text {
+      font-size: 19px;
+    }
+  }
