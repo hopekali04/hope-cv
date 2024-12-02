@@ -512,49 +512,321 @@
         </div>
     </section>
 
-    <section id="experience" class="section">
-        <div class="container">
-            <h2 class="section-title text-center">Experience</h2>
+    <style>
+        :root {
+          --gradient-start: #007AFF;
+          --gradient-end: #5856D6;
+          --card-bg: rgba(255, 255, 255, 0.95);
+          --timeline-width: 4px;
+        }
+        
+        .experience-section {
+          position: relative;
+          padding: 80px 0;
+          font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+          background: #0c0c0c;
+          overflow: hidden;
+        }
+        
+        /* Dynamic Background */
+        .experience-section::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+            radial-gradient(circle at 0% 0%, rgba(0, 122, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 100% 0%, rgba(88, 86, 214, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 100% 100%, rgba(0, 122, 255, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 0% 100%, rgba(88, 86, 214, 0.15) 0%, transparent 50%);
+          animation: backgroundShift 20s ease-in-out infinite alternate;
+        }
+        
+        /* Animated mesh grid */
+        .mesh-grid {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-image: 
+            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+          background-size: 50px 50px;
+          animation: meshFloat 15s ease-in-out infinite alternate;
+          opacity: 0.5;
+        }
+        
+        /* Floating orbs background decoration */
+        .orb {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(60px);
+          opacity: 0.4;
+          animation: orbFloat 20s ease-in-out infinite;
+        }
+        
+        .orb-1 {
+          width: 300px;
+          height: 300px;
+          background: var(--gradient-start);
+          top: 20%;
+          left: -100px;
+          animation-delay: 0s;
+        }
+        
+        .orb-2 {
+          width: 400px;
+          height: 400px;
+          background: var(--gradient-end);
+          bottom: -150px;
+          right: -100px;
+          animation-delay: -5s;
+        }
+        
+        @keyframes backgroundShift {
+          0% {
+            transform: scale(1) rotate(0deg);
+          }
+          100% {
+            transform: scale(1.1) rotate(5deg);
+          }
+        }
+        
+        @keyframes meshFloat {
+          0% {
+            transform: translateY(0) scale(1);
+          }
+          100% {
+            transform: translateY(20px) scale(1.1);
+          }
+        }
+        
+        @keyframes orbFloat {
+          0% {
+            transform: translate(0, 0);
+          }
+          50% {
+            transform: translate(30px, -30px);
+          }
+          100% {
+            transform: translate(0, 0);
+          }
+        }
+        
+        .section-title {
+          font-size: 48px;
+          font-weight: 700;
+          /*color: #ffffff; */
+          text-align: center;
+          margin-bottom: 60px;
+          position: relative;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+          color: var(--primary-color);
+        }
+        .timeline {
+          position: relative;
+          padding: 0;
+          list-style: none;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        
+        .timeline::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          width: var(--timeline-width);
+          background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+          border-radius: 4px;
+          transform: translateX(-50%);
+          box-shadow: 0 0 20px rgba(0, 122, 255, 0.5);
+        }
+        
+        .timeline > li {
+          position: relative;
+          margin-bottom: 80px;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .timeline > li.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .timeline-panel {
+          position: relative;
+          width: 45%;
+          background: var(--card-bg);
+          padding: 30px;
+          border-radius: 16px;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+          backdrop-filter: blur(20px);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .timeline-panel:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .timeline > li:nth-child(odd) .timeline-panel {
+          float: left;
+        }
+        
+        .timeline > li:nth-child(even) .timeline-panel {
+          float: right;
+        }
+        
+        .timeline-badge {
+          position: absolute;
+          left: 50%;
+          width: 50px;
+          height: 50px;
+          margin-left: -25px;
+          background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 0 20px rgba(0, 122, 255, 0.5);
+          transition: transform 0.3s ease;
+          z-index: 1;
+        }
+        
+        .timeline-badge:hover {
+          transform: scale(1.1);
+        }
+        
+        .timeline-badge i {
+          color: #fff;
+          font-size: 20px;
+        }
+        
+        .timeline-title {
+          font-size: 24px;
+          font-weight: 600;
+          color: #1d1d1f;
+          margin: 0 0 10px;
+        }
+        
+        .timeline-date {
+          color: var(--gradient-start);
+          font-size: 14px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        
+        .timeline-company {
+          font-weight: 600;
+          color: #1d1d1f;
+          margin-bottom: 15px;
+        }
+        
+        .timeline-body ul {
+          padding-left: 20px;
+          margin: 0;
+        }
+        
+        .timeline-body li {
+          color: #424245;
+          margin-bottom: 8px;
+          line-height: 1.5;
+        }
+        
+        @media (max-width: 768px) {
+          .timeline::before {
+            left: 50px;
+          }
+          
+          .timeline-panel {
+            width: calc(100% - 100px);
+            float: right;
+            margin-left: 100px;
+          }
+          
+          .timeline-badge {
+            left: 50px;
+          }
+        }
+        </style>
+        </head>
+        <body>
+        
+        <section class="experience-section">
+          <div class="mesh-grid"></div>
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="container">
+            <h2 class="section-title">Experience</h2>
             <ul class="timeline">
-                <li>
-                    <div class="timeline-badge"><i class="fas fa-briefcase"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">Full Stack Developer</h4>
-                            <p><small class="text-muted"><i class="fas fa-clock"></i> 12/2022 - Present</small></p>
-                        </div>
-                        <div class="timeline-body">
-                            <p>NNDI, Blantyre</p>
-                            <ul>
-                                <li>Develop and maintain cutting-edge software solutions using Golang and JavaScript</li>
-                                <li>Utilize Fiber and Vue frameworks to create efficient and responsive web applications</li>
-                                <li>Implement modern UI designs using Tailwind CSS</li>
-                                <li>Design and manage PostgreSQL databases for optimal performance</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="timeline-inverted">
-                    <div class="timeline-badge"><i class="fas fa-laptop-code"></i></div>
-                    <div class="timeline-panel">
-                        <div class="timeline-heading">
-                            <h4 class="timeline-title">Software Developer Intern</h4>
-                            <p><small class="text-muted"><i class="fas fa-clock"></i> 01/2023 – 03/2023</small></p>
-                        </div>
-                        <div class="timeline-body">
-                            <p>Credit Data MW</p>
-                            <ul>
-                                <li>Gained hands-on experience in PHP and CakePHP framework</li>
-                                <li>Contributed to existing software projects, enhancing functionality and user experience</li>
-                                <li>Worked with both PostgreSQL and MySQL databases</li>
-                                <li>Collaborated with senior developers to implement new features and resolve bugs</li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+              <li>
+                <div class="timeline-badge">
+                  <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="timeline-panel">
+                  <h4 class="timeline-title">Full Stack Developer</h4>
+                  <div class="timeline-date">
+                    <i class="fas fa-clock"></i> December 2022 - Present
+                  </div>
+                  <p class="timeline-company">NNDI, Blantyre</p>
+                  <div class="timeline-body">
+                    <ul>
+                      <li>Develop and maintain cutting-edge software solutions using Golang and JavaScript</li>
+                      <li>Utilize Fiber and Vue frameworks to create efficient and responsive web applications</li>
+                      <li>Implement modern UI designs using Tailwind CSS</li>
+                      <li>Design and manage PostgreSQL databases for optimal performance</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="timeline-badge">
+                  <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="timeline-panel">
+                  <h4 class="timeline-title">Software Developer Intern</h4>
+                  <div class="timeline-date">
+                    <i class="fas fa-clock"></i> January 2023 - March 2023
+                  </div>
+                  <p class="timeline-company">Credit Data MW</p>
+                  <div class="timeline-body">
+                    <ul>
+                      <li>Gained hands-on experience in PHP and CakePHP framework</li>
+                      <li>Contributed to existing software projects, enhancing functionality and user experience</li>
+                      <li>Worked with both PostgreSQL and MySQL databases</li>
+                      <li>Collaborated with senior developers to implement new features and resolve bugs</li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
             </ul>
-        </div>
-    </section>
+          </div>
+        </section>
+        
+        <script>
+        // Intersection Observer for fade-in animation
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, {
+          threshold: 0.1
+        });
+        
+        // Observe all timeline items
+        document.querySelectorAll('.timeline > li').forEach(item => {
+          observer.observe(item);
+        });
+        </script>
 
     <section id="projects" class="section bg-light">
         <div class="container">
@@ -562,7 +834,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="project-card">
-                        <img src="log.jpg" class="project-image" alt="E-commerce Platform">
+                        <img src="shop1.jpg" class="project-image" alt="E-commerce Platform">
                         <h3 class="project-title">E-commerce Platform</h3>
                         <p class="project-description">Developed a full-stack e-commerce platform using Vue.js and Golang, featuring real-time inventory management and secure payment integration.</p>
                         <div class="project-tech">Vue.js • Golang • PostgreSQL</div>
