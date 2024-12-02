@@ -237,29 +237,30 @@
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70">
     <nav id="navbar" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
+            <!-- Brand -->
             <a class="navbar-brand" href="#hero">Hope Kalitera</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    
+            <!-- Social Icons (Always Visible) -->
+            <div class="social-icons order-lg-2">
+                <a class="nav-link d-inline-block" href="https://www.linkedin.com/in/hope-kalitera-23b2301bb/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a class="nav-link d-inline-block" href="https://github.com/hopekali04" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a class="nav-link d-inline-block" href="mailto:hopekalitera04@gmail.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+    
+            <!-- Toggle Button -->
+            <button class="navbar-toggler ms-auto order-lg-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://www.linkedin.com/in/hope-kalitera-23b2301bb/" target="_blank" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/hopekali04" target="_blank" aria-label="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="mailto:hopekalitera04@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav me-end">
+    
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse order-lg-1" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
@@ -279,6 +280,85 @@
             </div>
         </div>
     </nav>
+    
+    <style>
+    /* Custom styles for the navbar */
+    .navbar {
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+        background-color: rgba(33, 37, 41, 0.95);
+        backdrop-filter: blur(10px);
+    }
+    
+    /* Ensure social icons are always visible and centered */
+    .social-icons {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0 1rem;
+    }
+    
+    .social-icons .nav-link {
+        padding: 0.5rem;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+    }
+    
+    .social-icons .nav-link:hover {
+        color: #fff;
+    }
+    
+    /* Navbar items styling */
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        color: #fff;
+    }
+    
+    /* Brand styling */
+    .navbar-brand {
+        font-weight: 600;
+        font-size: 1.25rem;
+    }
+    
+    /* Adjust spacing for mobile */
+    @media (max-width: 991.98px) {
+        .navbar-collapse {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    
+        .navbar-nav {
+            text-align: center;
+        }
+    
+        .social-icons {
+            justify-content: center;
+        }
+    }
+    
+    /* Add shadow when scrolled */
+    .navbar.scrolled {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+    
+    <script>
+    // Add shadow on scroll
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 20) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    </script>
 
     <style>
          .shop-banner {
