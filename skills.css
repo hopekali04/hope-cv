@@ -1,0 +1,101 @@
+.skills-section {
+    padding: 120px 24px;
+    background: linear-gradient(180deg, #fbfbfd 0%, #f5f5f7 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skills-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #1d1d1f;
+    text-align: center;
+    margin-bottom: 64px;
+    letter-spacing: -0.03em;
+  }
+  
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .skill-item {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    padding: 16px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+  
+  .skill-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .skill-text {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1d1d1f;
+    margin: 0;
+  }
+  
+  /* Category styling */
+  .skill-item[data-category="language"] {
+    border-left: 3px solid #007AFF;
+  }
+  
+  .skill-item[data-category="framework"] {
+    border-left: 3px solid #5856D6;
+  }
+  
+  .skill-item[data-category="frontend"] {
+    border-left: 3px solid #FF2D55;
+  }
+  
+  .skill-item[data-category="database"] {
+    border-left: 3px solid #34C759;
+  }
+  
+  .skill-item[data-category="tools"] {
+    border-left: 3px solid #FF9500;
+  }
+  
+  @media (max-width: 768px) {
+    .skills-section {
+      padding: 80px 16px;
+    }
+    
+    .section-title {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .skills-grid {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+    }
+  }
